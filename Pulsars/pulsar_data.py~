@@ -1,8 +1,22 @@
 # -*- coding: utf-8 -*-
-"""This module creates a dictionary 'data' of pulsar data keyed to the pulsar's
+"""
+Astrophysics.Pulsars.pulsar_data - data from the Parkes pulsar catalog
+
+This module creates a dictionary 'data' of pulsar data keyed to the pulsar's
 JNAME. Each pulsar's data is a dictionary keyed to the keys used in the
 psrcat.db from the Parkes Pulsar Survey website,
         http://www.atnf.csiro.au/research/pulsar/.
+
+An example of getting specific data
+>>> import Astrophysics.Pulsars.pulsar_data as PD
+>>> data = PD.data
+>>> PD.names['B0531+21']
+'J0534+2200'
+>>> data['J0534+2200']['RAJ'], data['J0534+2200']['DECJ']
+('05:34:31.973', '+22:00:52.06')
+>>> data['J0538+2817']['RAJ'], data['J0538+2817']['DECJ'], data['J0538+2817']['S1400']
+>>> ('05:38:25.0572', '+28:17:09.161', '1.9')
+
 To get a sorted list of data keys, do
 >>> K = list(help.keys())
 >>> K.sort()
@@ -13,6 +27,7 @@ To get a sorted list of data keys, do
  'POSEPOCH', 'PSRB', 'PSRJ', 'RAJ', 'S1400', 'S400', 'S600', 'SPINDX',
  'START', 'SURVEY', 'T0', 'TASC', 'TRES', 'TZRFRQ', 'TZRMJD', 'TZRSITE',
  'W10', 'W50']
+
 To get a (very long!) list of pulsar names, do
 >>> P = data.keys()
 >>> P.sort()
@@ -25,19 +40,23 @@ To get a (very long!) list of pulsar names, do
  """
 
 import pickle
-import Astronomy
+import Astronomy as A
 import sys
 import math
+import logging
+
+module_logger = logging.getLogger(__name__)
 
 pyver=sys.version[0:3]
-dbfile=open('/usr/local/lib/python'+pyver+'/site-packages/Astrophysics/Pulsars/pulsars-pickle')
+dbfile=open(
+  '/usr/local/lib/python'+pyver+'/DSN-Sci-packages/Astrophysics/Pulsars/pulsars-pickle')
 data=pickle.load(dbfile)
 dbfile.close()
 
 namefile=open(
   '/usr/local/lib/python'
   + pyver +
-  '/site-packages/Astrophysics/Pulsars/BtoJnames')
+  '/DSN-Sci-packages/Astrophysics/Pulsars/BtoJnames')
 names=pickle.load(namefile)
 namefile.close()
 
@@ -102,8 +121,11 @@ def key_help(key):
     return help[key]
 
 def get(data,key):
-    """Returns the value corresponding to a key, if it exists.  Otherwise
-    it returns an empty string."""
+    """
+    Returns the value corresponding to a key, if it exists.
+    
+    Otherwise it returns an empty string.
+    """
     try:
         value = data[key]
     except KeyError:
@@ -111,15 +133,23 @@ def get(data,key):
     return value
 
 def equatorial(data):
-    """Returns the J2000 right ascension and declination in hours and degrees
-    from keyed data or from ecliptic or galactic coordinates, whatever is
-    given."""
+    """
+    Returns the J2000 right ascension and declination
+    
+    Taken from keyed data or computed from from ecliptic or galactic 
+    coordinates, whatever is given.
+    
+    @return: hours (float), degrees (float)
+    """
     ra = get(data,'RAJ')
     if ra != '':
         decl = get(data,'DECJ')
-        return Astronomy.formats.parse_colon_delimited_angles(ra,decl)
+        ra   = A.Angle(data['RAJ'], A.u.hourangle)
+        decl = A.Angle(data['DECJ'],A.u.deg)
+        return ra.hour, decl.deg
     else:
-        elong = float(get(data,'ELONG'))
+        elong = get(data,'ELONG')
+        module_logger.debug("equatorial: elong is %s", elong)
         if elong != '':
             elat = float(get(data,'ELAT'))
             try:
@@ -130,18 +160,25 @@ def equatorial(data):
                 except (IndexError, ValueError):
                     # default to J2000
                     mjd = 51544
-            ra,decl = Astronomy.ecliptic_to_J2000(elong,elat,mjd)
+            ra,decl = A.ecliptic_to_J2000(elong,elat,mjd)
+            return ra*12/pi, decl*180/pi
         else:
             # try galactic coordinates
-            pass # for now
-    return ra,decl
+            return "","" # for now
+    return None
         
 def period(data):
-    """Returns the pulsar period in millisec"""
+    """
+    Returns the pulsar period in millisec
+    """
     # There are two ways to record the pulse period (in ms)
     period = get(data,'P0')
     if period == '':
-        period = 1000./float(get(data,'F0'))
+        freq = get(data,'F0')
+        if freq:
+          period = 1000./float(freq)
+        else:
+          pass
     else:
         period = 1000*float(period)
     return period

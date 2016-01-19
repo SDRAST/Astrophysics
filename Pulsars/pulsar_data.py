@@ -40,9 +40,12 @@ To get a (very long!) list of pulsar names, do
  """
 
 import pickle
-import Astronomy
+import Astronomy as A
 import sys
 import math
+import logging
+
+module_logger = logging.getLogger(__name__)
 
 pyver=sys.version[0:3]
 dbfile=open(
@@ -118,8 +121,11 @@ def key_help(key):
     return help[key]
 
 def get(data,key):
-    """Returns the value corresponding to a key, if it exists.  Otherwise
-    it returns an empty string."""
+    """
+    Returns the value corresponding to a key, if it exists.
+    
+    Otherwise it returns an empty string.
+    """
     try:
         value = data[key]
     except KeyError:
@@ -127,15 +133,23 @@ def get(data,key):
     return value
 
 def equatorial(data):
-    """Returns the J2000 right ascension and declination in hours and degrees
-    from keyed data or from ecliptic or galactic coordinates, whatever is
-    given."""
+    """
+    Returns the J2000 right ascension and declination
+    
+    Taken from keyed data or computed from from ecliptic or galactic 
+    coordinates, whatever is given.
+    
+    @return: hours (float), degrees (float)
+    """
     ra = get(data,'RAJ')
     if ra != '':
         decl = get(data,'DECJ')
-        return Astronomy.formats.parse_colon_delimited_angles(ra,decl)
+        ra   = A.Angle(data['RAJ'], A.u.hourangle)
+        decl = A.Angle(data['DECJ'],A.u.deg)
+        return ra.hour, decl.deg
     else:
-        elong = float(get(data,'ELONG'))
+        elong = get(data,'ELONG')
+        module_logger.debug("equatorial: elong is %s", elong)
         if elong != '':
             elat = float(get(data,'ELAT'))
             try:
@@ -146,18 +160,25 @@ def equatorial(data):
                 except (IndexError, ValueError):
                     # default to J2000
                     mjd = 51544
-            ra,decl = Astronomy.ecliptic_to_J2000(elong,elat,mjd)
+            ra,decl = A.ecliptic_to_J2000(elong,elat,mjd)
+            return ra*12/math.pi, decl*180/math.pi
         else:
             # try galactic coordinates
-            pass # for now
-    return ra,decl
+            return "","" # for now
+    return None
         
 def period(data):
-    """Returns the pulsar period in millisec"""
+    """
+    Returns the pulsar period in millisec
+    """
     # There are two ways to record the pulse period (in ms)
     period = get(data,'P0')
     if period == '':
-        period = 1000./float(get(data,'F0'))
+        freq = get(data,'F0')
+        if freq:
+          period = 1000./float(freq)
+        else:
+          pass
     else:
         period = 1000*float(period)
     return period
