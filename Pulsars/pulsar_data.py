@@ -49,14 +49,12 @@ module_logger = logging.getLogger(__name__)
 
 pyver=sys.version[0:3]
 dbfile=open(
-  '/usr/local/lib/python'+pyver+'/DSN-Sci-packages/Astrophysics/Pulsars/pulsars-pickle')
+  '/usr/local/RATools/Astrophysics/Pulsars/pulsars-pickle','rb')
 data=pickle.load(dbfile)
 dbfile.close()
 
 namefile=open(
-  '/usr/local/lib/python'
-  + pyver +
-  '/DSN-Sci-packages/Astrophysics/Pulsars/BtoJnames')
+  '/usr/local/RATools/Astrophysics/Pulsars/BtoJnames','rb')
 names=pickle.load(namefile)
 namefile.close()
 

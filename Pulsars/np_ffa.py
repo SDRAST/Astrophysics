@@ -16,8 +16,8 @@ def shift_and_add(a,shift):
   """
   n_rows,period = a.shape
   if n_rows != 2:
-    print "shift_and_add: shift_and_add requires 2 rows"
-    print "shift_and_add: received:\n",a
+    print("shift_and_add: shift_and_add requires 2 rows")
+    print("shift_and_add: received:\n",a)
     return [[],[]]
   # If you try to shift more than the array length you get no shift
   shift = shift % period
@@ -34,9 +34,9 @@ def process_column(a,step):
   """
   n_rows,period = a.shape
   radix = 2**step
-  upper_rows = range(0,n_rows,radix)
+  upper_rows = list(range(0,n_rows,radix))
   for upper_row in upper_rows:
-    pair_uppers = range(upper_row,upper_row+radix/2)
+    pair_uppers = list(range(upper_row,upper_row+radix/2))
     for pair_upper in pair_uppers:
       pair_lower = pair_upper + radix/2
       offset = pair_upper % radix
@@ -65,32 +65,32 @@ def reshape_data(samples,period):
   """
   n_samp = len(samples)
   if diag:
-    print "reshape_data:",n_samp,"samples"
+    print("reshape_data:",n_samp,"samples")
   n_rows = len(samples)/period
   if diag:
-    print "reshape_data:",n_rows,"rows"
+    print("reshape_data:",n_rows,"rows")
   power_of_2 = int(log(n_rows)/log(2))+1
   if diag:
-    print "reshape_data: Exponent =",power_of_2
+    print("reshape_data: Exponent =",power_of_2)
   n_rows = 2**power_of_2
   if diag:
-    print "reshape_data: New number of rows =",n_rows
+    print("reshape_data: New number of rows =",n_rows)
   num_pad = n_rows*period-len(samples)
   if diag:
-    print "reshape_data:",num_pad,"samples of 0 for padding"
+    print("reshape_data:",num_pad,"samples of 0 for padding")
   if num_pad < n_samp/2:
-    print "reshape_data:",num_pad,"zeros to be added"
+    print("reshape_data:",num_pad,"zeros to be added")
     padded = NP.append(samples,NP.zeros(num_pad))
-    print "reshape_data: Padded data shape",padded.shape
+    print("reshape_data: Padded data shape",padded.shape)
     a = padded.reshape((n_rows,period))
   else:
     power_of_2 -= 1
-    print "reshape_data: New exponent =",power_of_2
+    print("reshape_data: New exponent =",power_of_2)
     n_rows = 2**power_of_2
-    print "reshape_data: New number of rows =",n_rows
+    print("reshape_data: New number of rows =",n_rows)
     a = samples[:n_rows*period].reshape((n_rows,period))
   if diag:
-    print "reshape_data: Returned shape:",a.shape
+    print("reshape_data: Returned shape:",a.shape)
   return a, power_of_2
 
 def np_ffa(samples,period):

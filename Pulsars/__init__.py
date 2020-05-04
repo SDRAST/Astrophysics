@@ -14,8 +14,8 @@ import Astronomy
 import Physics
 import math
 import pickle
-import pulsar_data
-import np_ffa
+from . import pulsar_data
+from . import np_ffa
 from math import log10
 
 def propagation_delay(electron_density, path_length, frequency):
@@ -119,7 +119,7 @@ def broadening(f,dm,model="B",dalpha=0):
     c = 1.02
     alpha = 4.4
   else:
-    raise "Unknown scattering model",model
+    raise "Unknown scattering model "+model
 
   log_tau = a + b*log10(dm) + c*(log10(dm)**2) - (alpha+dalpha)*log10(f)
   return 10**(log_tau)
