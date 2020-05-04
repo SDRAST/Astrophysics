@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Single Dish Radio Astronomy Software Tools &#8212; Astrophysics 0.9 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tb_galaxy_NCP" href="api/Astrophysics.Tb_galaxy_NCP.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api/Astrophysics.Tb_galaxy_NCP.html" title="Tb_galaxy_NCP"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Astrophysics 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Single Dish Radio Astronomy Software Tools</a><ul>
+<li><a class="reference internal" href="#module-Astrophysics">Astrophysics Package</a><ul>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-Astrophysics.Pulsars">Astrophysics.Pulsars Package</a><ul>
+<li><a class="reference internal" href="#contents">Contents</a></li>
+<li><a class="reference internal" href="#id1">Functions</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api/Astrophysics.Tb_galaxy_NCP.html"
+                        title="next chapter">Tb_galaxy_NCP</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="single-dish-radio-astronomy-software-tools">
+<h1>Single Dish Radio Astronomy Software Tools<a class="headerlink" href="#single-dish-radio-astronomy-software-tools" title="Permalink to this headline">¶</a></h1>
+<p>For an overview of SDRAST and the current status please visit <a class="reference external" href="https://sdrast.github.io/">https://sdrast.github.io/</a>.</p>
+<div class="section" id="module-Astrophysics">
+<span id="astrophysics-package"></span><h2>Astrophysics Package<a class="headerlink" href="#module-Astrophysics" title="Permalink to this headline">¶</a></h2>
+<p>Astrophysics functions and modules</p>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astrophysics.Tb_galaxy_NCP.html#Astrophysics.Tb_galaxy_NCP" title="Astrophysics.Tb_galaxy_NCP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tb_galaxy_NCP</span></code></a>(f)</p></td>
+<td><p>Returns the sky brightness in K due to galactic synchrotron radiation at the north celestial pole given the frequency f in MHz</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-Astrophysics.Pulsars">
+<span id="astrophysics-pulsars-package"></span><h2>Astrophysics.Pulsars Package<a class="headerlink" href="#module-Astrophysics.Pulsars" title="Permalink to this headline">¶</a></h2>
+<p>package Astrophysics.Pulsars - analyze pulsar data</p>
+<div class="section" id="contents">
+<h3>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Effects related to propagation of pulsed signals (main module).</p></li>
+<li><p>Pulsar data from the Parkes Catalogue (module pulsar_data)</p></li>
+<li><p>Fast folding algorithm for DM searching using numpy (module np_ffa).</p></li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astrophysics.Pulsars.DfDt.html#Astrophysics.Pulsars.DfDt" title="Astrophysics.Pulsars.DfDt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DfDt</span></code></a>(f_GHz, DM)</p></td>
+<td><p>Given the frequency in GHz, and the dispersion measure in pc/cm^3, returns the slope of f vs t in MHz/microsec</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astrophysics.Pulsars.broadening.html#Astrophysics.Pulsars.broadening" title="Astrophysics.Pulsars.broadening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">broadening</span></code></a>(f, dm[, model, dalpha])</p></td>
+<td><p>Pulse broadeing due to interstellar scattering</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astrophysics.Pulsars.differential_time_delay.html#Astrophysics.Pulsars.differential_time_delay" title="Astrophysics.Pulsars.differential_time_delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">differential_time_delay</span></code></a>(DM, f, BW)</p></td>
+<td><p>Given the dispersion measure in cm^-3/pc, f in GHz, BW in MHz returns time_delay in microseconds</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astrophysics.Pulsars.drift_rate.html#Astrophysics.Pulsars.drift_rate" title="Astrophysics.Pulsars.drift_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drift_rate</span></code></a>(f, electron_density, path_length)</p></td>
+<td><p>Given the frequency f in Hz, the mean electron density, and the path length, returns the drift rate in Hz/s</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astrophysics.Pulsars.emission_measure.html#Astrophysics.Pulsars.emission_measure" title="Astrophysics.Pulsars.emission_measure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">emission_measure</span></code></a>(electron_density, path_length)</p></td>
+<td><p>electron density in electrons/cc</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">log10</span></code></p></td>
+<td><p>Return the base 10 logarithm of x.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/Astrophysics.Pulsars.propagation_delay.html#Astrophysics.Pulsars.propagation_delay" title="Astrophysics.Pulsars.propagation_delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">propagation_delay</span></code></a>(electron_density, …)</p></td>
+<td><p>EM radiation propagation time</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/Astrophysics.Pulsars.time_delay.html#Astrophysics.Pulsars.time_delay" title="Astrophysics.Pulsars.time_delay"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_delay</span></code></a>(DM, f)</p></td>
+<td><p>EM transit time from dispersion measure</p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api/Astrophysics.Tb_galaxy_NCP.html" title="Tb_galaxy_NCP"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Astrophysics 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, T.B.H. Kuiper.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

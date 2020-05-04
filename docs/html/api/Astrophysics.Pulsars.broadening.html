@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>broadening &#8212; Astrophysics 0.9 documentation</title>
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="differential_time_delay" href="Astrophysics.Pulsars.differential_time_delay.html" />
+    <link rel="prev" title="DfDt" href="Astrophysics.Pulsars.DfDt.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Astrophysics.Pulsars.differential_time_delay.html" title="differential_time_delay"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Astrophysics.Pulsars.DfDt.html" title="DfDt"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Astrophysics 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Astrophysics.Pulsars.DfDt.html"
+                        title="previous chapter">DfDt</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Astrophysics.Pulsars.differential_time_delay.html"
+                        title="next chapter">differential_time_delay</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/Astrophysics.Pulsars.broadening.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="broadening">
+<h1>broadening<a class="headerlink" href="#broadening" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="Astrophysics.Pulsars.broadening">
+<code class="sig-prename descclassname">Astrophysics.Pulsars.</code><code class="sig-name descname">broadening</code><span class="sig-paren">(</span><em class="sig-param">f</em>, <em class="sig-param">dm</em>, <em class="sig-param">model='B'</em>, <em class="sig-param">dalpha=0</em><span class="sig-paren">)</span><a class="headerlink" href="#Astrophysics.Pulsars.broadening" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pulse broadeing due to interstellar scattering</p>
+<p>The model is taken from Bhat et al., Ap.J. 605, 759 (2004), eqn. 7.
+The coefﬁcients, a = -6.46, b = 0.154, and c = 1.07, are only slightly
+different from those of Cordes &amp; Lazio (2003), a = -6.59, b = 0.129, and
+c = 1.02.  The frequency exponent alpha was determined by Bhat et al.
+to be 3.86 +/- 0.16.</p>
+<p>:param f : frequency (GHz)
+:type  f : float</p>
+<p>:param dm : dispersion measure (cm^3 / pc)
+:type  dm : float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the broadening timescale in millisec</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Astrophysics.Pulsars.differential_time_delay.html" title="differential_time_delay"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Astrophysics.Pulsars.DfDt.html" title="DfDt"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Astrophysics 0.9 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, T.B.H. Kuiper.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>
