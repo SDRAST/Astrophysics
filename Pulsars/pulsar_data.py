@@ -41,6 +41,7 @@ To get a (very long!) list of pulsar names, do
 
 import pickle
 import Astronomy as A
+import ephem as E
 import sys
 import math
 import logging
@@ -142,9 +143,9 @@ def equatorial(data):
     ra = get(data,'RAJ')
     if ra != '':
         decl = get(data,'DECJ')
-        ra   = A.Angle(data['RAJ'], A.u.hourangle)
-        decl = A.Angle(data['DECJ'],A.u.deg)
-        return ra.hour, decl.deg
+        ra   = E.hours(data['RAJ']) # E.Angle(data['RAJ'], A.u.hourangle)
+        decl = E.degrees (data['DECJ']) # E.Angle(data['DECJ'], A.u.deg)
+        return ra, decl
     else:
         elong = get(data,'ELONG')
         module_logger.debug("equatorial: elong is %s", elong)
